@@ -1,6 +1,4 @@
-
 function findGif() {
-
     //let getGif = document.getElementById('serchGif').value;
     let parameters = {
         api_key: "EtVLIEKThUFqMDfAwS4KkeyOisuLiK6v",
