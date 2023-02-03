@@ -1,63 +1,18 @@
-const getGif = document.getElementById('serchGif').value;
-//вернуть эвентлисенер!!
-
 function findGif() {
-
-    let q = "sun";
+    let q = document.getElementById('serchGif').value;
 
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=EtVLIEKThUFqMDfAwS4KkeyOisuLiK6v&q=${q}&limit=5&offset=0&rating=g&lang=en`)
     .then(response => response.json())
     .then(gif => {
         console.log(gif)
-        //где взять значения для src??
-        document.getElementById('firstGif').src = "https://gph.is/g/aR8RmD6";
-        //document.getElementById('secondGif').src = "https://giphy.com/gifs/animation-loop-sun-26BGDQxDCZDFHW5Ne";
-        //document.getElementById('thirdGif').src = gif.;
-        //document.getElementById('fourthGif').src = gif.;
-        //document.getElementById('fifthGif').src = gif.;
+        for(let i = 0; i < 5; i++){
+            //создаю переменную, образующую новый элемент, передав в параметре имя тега <img /> (в данном случае) выводящий гифки 
+            let imgContainer = document.createElement('img')
+            //добавляю новый атрибут у выбранного элемента (в данном случае) и указываю параметры, необходимые для выдачи результата поиска гивок (или этим же образом изменяю значение существующего атрибута у выбранного элемента)
+            imgContainer.setAttribute('src', gif.data[i].images.fixed_height.url);
+            //обращаюсь к тегу div с id контейнер при помощи метода append,позволяющего вставить в конец какого-либо элемента другой элемент. Параметром метод принимает элемент, как правило созданный через createElement, либо строку. Можно добавить сразу несколько элементов или строк, перечислив их через запятую.
+            container.append(imgContainer);
+        }
     })
     .catch(error => console.log(error));
 } 
-
-findGif();
-
-//1/ чтение переменной из поля ввода (инпут)
-//2/ вывести картинки на экран (урлы из консоли)
-
-
-
-
-//_____________________________________________________________________________________________________________
-
-// function findGif() {
-//     //let getGif = document.getElementById('serchGif').value;
-//     let parameters = {
-//         api_key: "EtVLIEKThUFqMDfAwS4KkeyOisuLiK6v",
-//         q: "love",
-//         limit: 5,
-//         rating: "g",
-//         lang: "en",
-//     }
-//     fetch("https://api.giphy.com/v1/gifs/search", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "text/plain;charset=UTF-8",
-//             "X-API-KEY": "EtVLIEKThUFqMDfAwS4KkeyOisuLiK6v",
-//             "Access-Control-Allow-Origin": "https://api.giphy.com",
-//             "Access-Control-Expose-Headers": "Content-Encoding,API-Key",
-//         },
-//         body: JSON.stringify(parameters),
-//     })
-//     .then(response => response.json())
-//     .then(gif => {
-//         console.log(gif)
-//         //где взять значения для src??
-//         //document.getElementById('firstGif').src = gif.;
-//         //document.getElementById('secondGif').src = gif.;
-//         //document.getElementById('thirdGif').src = gif.;
-//         //document.getElementById('fourthGif').src = gif.;
-//         //document.getElementById('fifthGif').src = gif.;
-//     })
-//     .catch(error => console.log(error));
-// } 
-// findGif();
